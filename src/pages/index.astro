@@ -1,6 +1,7 @@
 ---
 import type { Pokemon } from "../types";
 
+import Layout from '../components/Layout.astro';
 import PokemonCard from '../components/PokemonCard.astro';
 import pokemonData from '../data/pokemon.json';
 
@@ -14,8 +15,23 @@ const pokemonList: Pokemon[] = pokemonData.slice(0, 10);
     <title>Pokemon</title>
   </head>
   <body>
-    {pokemonList.map((pokemon) => (
-      <PokemonCard pokemon={pokemon} />
-    ))}
+    <Layout>
+      <form>
+        <input
+          type="text"
+          name="q"
+          class="p-3 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-xl border-gray-300 border-2 rounded-md"
+          placeholder="Search"
+        />
+      </form>
+    
+      <div class="grid grid-cols-3 gap-5 mt-3">
+        {pokemonList.map((pokemon) => (
+          <a href={`/pokemon/${pokemon.id}`}>
+            <PokemonCard pokemon={pokemon} />
+          </a>
+        ))}
+      </div>
+  </Layout>
   </body>
 </html>

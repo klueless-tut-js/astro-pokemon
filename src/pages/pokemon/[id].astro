@@ -1,0 +1,48 @@
+---
+import type { Pokemon } from "../../types";
+
+import Layout from '../../components/Layout.astro';
+import PokemonCard from '../../components/PokemonCard.astro';
+import pokemonData from '../../data/pokemon.json';
+
+export function getStaticPaths() {
+  return pokemonData.map((pokemon) => ({
+      params: { 
+        id: pokemon.id.toString() 
+      },
+      props: {
+        pokemon
+      }
+    }));
+}
+
+const pokemon = Astro.props.pokemon;
+const image = `/images/${pokemon.name.toLowerCase()}.jpg`
+
+---
+<Layout name={pokemon.name}>
+  <div class="flex gap-2">
+    <div class="max-w-md">
+      <img src={image} alt={pokemon.name} class="w-full" />
+    </div>
+    <div>
+      <h1 class="font-bold text-5xl mb-2">{pokemon.name}</h1>
+      <div class="italic text-xl">{pokemon.type.join(", ")}</div>
+      <div
+        class="grid" style='grid-template-tolumns: 1fr 1fr'>
+        <div class="font-bold mr-4">HP</div>
+        <div>{pokemon.hp}</div>
+        <div class="font-bold mr-4">Speed</div>
+        <div>{pokemon.speed}</div>
+        <div class="font-bold mr-4">Attack</div>
+        <div>{pokemon.attack}</div>
+        <div class="font-bold mr-4">Special Attack</div>
+        <div>{pokemon.special_attack}</div>
+        <div class="font-bold mr-4">Defense</div>
+        <div>{pokemon.defense}</div>
+        <div class="font-bold mr-4">Special Defense</div>
+        <div>{pokemon.special_defense}</div>
+      </div>
+    </div>
+  </div>
+</Layout>

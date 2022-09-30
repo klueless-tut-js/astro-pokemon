@@ -6,7 +6,7 @@ export interface Props {
 }
 
 const { pokemon } = Astro.props as Props;
-const backgroundImage = `background-image: url("images/${pokemon.name.toLowerCase()}.jpg");`
+const backgroundImage = `background-image: url("/images/${pokemon.name.toLowerCase()}.jpg");`
 ---
 
 <div class="w-full flex border border-gray-200 rounded-md shadow-lg">

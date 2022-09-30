@@ -1,11 +1,20 @@
 ---
-console.log('xxxxxxxx');
-import pokemon from '../data/pokemon.json';
+import type { Pokemon } from "../types";
 
+import PokemonCard from '../components/PokemonCard.astro';
+import data from '../data/pokemon.json';
+const pokemons: Pokemon[] = data;
 ---
 
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pokemon</title>
+  </head>
   <body>
-    
+    {pokemons.map((pokemon) => (
+      <PokemonCard pokemon={pokemon} />
+    ))}
   </body>
 </html>

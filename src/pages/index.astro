@@ -2,8 +2,9 @@
 import type { Pokemon } from "../types";
 
 import PokemonCard from '../components/PokemonCard.astro';
-import data from '../data/pokemon.json';
-const pokemons: Pokemon[] = data;
+import pokemonData from '../data/pokemon.json';
+
+const pokemonList: Pokemon[] = pokemonData.slice(0, 10);
 ---
 
 <html lang="en">
@@ -13,7 +14,7 @@ const pokemons: Pokemon[] = data;
     <title>Pokemon</title>
   </head>
   <body>
-    {pokemons.map((pokemon) => (
+    {pokemonList.map((pokemon) => (
       <PokemonCard pokemon={pokemon} />
     ))}
   </body>

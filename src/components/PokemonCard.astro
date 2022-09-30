@@ -6,14 +6,13 @@ export interface Props {
 }
 
 const { pokemon } = Astro.props as Props;
+const backgroundImage = `background-image: url("images/${pokemon.name.toLowerCase()}.jpg");`
 ---
 
 <div class="w-full flex border border-gray-200 rounded-md shadow-lg">
   <div
     class="m-2 h-48 lg:h-auto lg:w-24 flex-none bg-contain bg-no-repeat rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
-    style={{
-      backgroundImage: `images/${pokemon.name.toLowerCase()}.jpg")`,
-    }}
+    style={backgroundImage}
     title={pokemon.name}
   ></div>
   <div class="bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
